@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# colors
+txtblk='\e[0;30m' # Black
+txtred='\e[0;31m' # Red
+txtgrn='\e[0;32m' # Green
+txtylw='\e[0;33m' # Yellow
+txtblu='\e[0;34m' # Blue
+txtpur='\e[0;35m' # Purple
+txtcyn='\e[0;36m' # Cyan
+txtwht='\e[0;37m' # White
+italic='\e[3m'    #italic
+reset='\e[0m'     #reset
+
+# info
+USER=$(whoami)
+KERNEL=$(uname -r)
+OS=$(hostnamectl | grep "Operating System: " | cut -c 19-)
+PKGS=$(pacman -Q | wc -l)
+MUSIC=$(playerctl metadata title)
+WM=$(wmctrl -m | grep "^Name:" | cut -d":" -f2-)
+GTK=$(cat /home/okk/.config/gtk-3.0/settings.ini | grep "^gtk-theme-name=" | cut -d"=" -f2-)
+UPTIME=$(uptime -p | cut -d"," -f1)
+SHELL=$(echo $SHELL | cut -d"/" -f3)
+
+# fetch
+echo -e "${txtred}⠀⠀⠀⠀⣀⣤⣴⣶⣶⣦⣄⡀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣶⣶⣦⣤⡀⠀⠀⠀⠀${italic}user       ~  ${USER}"
+echo -e "${txtred}⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠀⠀${italic}kernel     ~  ${KERNEL}"
+echo -e "${txtylw}⠀⠀⣾⣿⠟⠋⠉⠀⠀⠉⠙⠻⣿⣷⡀⣰⣿⣿⣿⠟⠉⠀⠀⠀⠈⠙⣿⣷⠀⠀${italic}os         ~  ${OS}"
+echo -e "${txtylw}⠀⢸⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⣿⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠸⣿⡇⠀${italic}music      ~  ${MUSIC}"
+echo -e "${txtwht}⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀${italic}wm         ~ ${WM}"
+echo -e "${txtblu}⠀⢸⣿⡆⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⡇⠀${italic}gtk        ~  ${GTK}"
+echo -e "${txtblu}⠀⠀⢿⣿⣄⡀⠀⠀⠀⢀⣴⣿⣿⣿⠟⠘⢿⣿⣦⣀⡀⠀⠀⢀⣀⣴⣿⡿⠀⠀${italic}uptime     ~  ${UPTIME}"
+echo -e "${txtpur}⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⠀⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁⠀⠀${italic}pkgs       ~  ${PKGS}"
+echo -e "${txtpur}⠀⠀⠀⠀⠈⠛⠻⠿⠿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠈⠙⠻⠿⠿⠿⠛⠉⠀⠀⠀⠀${italic}shell      ~  ${SHELL}"
