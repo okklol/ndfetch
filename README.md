@@ -10,4 +10,4 @@ a fetch that features the neurodiversity symbol
 ### installation
 - clone this repo
 - change the script permissions (```sudo chmod +x ~/PATH/TO/SCRIPT```)
-- move the script to user bin (```sudo mv ~/PATH/TO/SCRIPT usr/bin```)
+- move the script to usr/bin (```sudo mv ~/PATH/TO/SCRIPT usr/bin```)
